@@ -127,8 +127,6 @@ def test_creating_project():
 
 
 
-
-
 def test_creating_request():
     driver.implicitly_wait(10)
     driver.get("https://pwa.iranrahyaft.ir")
@@ -197,3 +195,5 @@ def test_creating_request():
 
 
 
+
+test_creating_request()
