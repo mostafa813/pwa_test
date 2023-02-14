@@ -1,9 +1,11 @@
+from selenium.webdriver.common import alert
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 from time import sleep
 from faker import  Faker
 fake = Faker()
 from selenium.webdriver.remote.webelement import WebElement
+
 
 driver = webdriver.Chrome(executable_path="C:\chromedriver.exe")
 from selenium.webdriver.common.keys import Keys
@@ -13,8 +15,8 @@ actions = ActionChains(driver)
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime
-
-
+from selenium.webdriver.common.alert import Alert
+alert = Alert(driver)
 names = [fake.unique.user_name() for i in range(4)]
 fake_name=names[0]
 fake_name2=names[1]
@@ -196,4 +198,110 @@ def test_creating_request():
 
 
 
-test_creating_request()
+
+
+def test_turning_request_to_project():
+    driver.implicitly_wait(10)
+    driver.get("https://pwa.iranrahyaft.ir")
+    driver.set_window_size(360,800)
+    sleep(1)
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a[2]').click()
+    sleep(1)
+    driver.find_element("id","phoneInputLogin").send_keys("09155607423")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال کد']").click()
+    sleep(1)
+    driver.find_element("xpath","(//input[@type='tel'])[2]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[3]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
+    sleep(1)
+    driver.find_element("xpath","//a[@href='/create']").click()
+    sleep(1)
+    driver.find_element("id","title").send_keys(fake_name2)
+    sleep(1)
+    driver.find_element("xpath","//button[contains(@class,'w-5 h-5')]").click()
+    sleep(1)
+    driver.find_element("xpath","(//div[contains(@class,'rounded-full w-[26px]')])[2]").click()
+    sleep(1)
+    driver.find_element("xpath","(//button[text()='سایر'])[2]").click()
+    sleep(1)
+    driver.find_element("xpath","(//div[contains(@class,'rounded-full w-[26px]')])[3]").click()
+    sleep(1)
+    driver.find_element("xpath","//button[text()='کتابخواني']").click()
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ادبیات']").click()
+    sleep(1)
+    driver.find_element("xpath","//button[text()='تايید و ثبت موضوع']").click()
+    sleep(1)
+    driver.find_element("xpath","(//button[contains(@class,'w-5 h-5')])[2]").click()
+    sleep(1)
+    driver.find_element("xpath","//div[contains(@class,'w-[25.1px] h-[25.1px]')]").click()
+    sleep(1)
+    driver.find_element("xpath","//*[text()='نيازمندی خود را انتخاب کنید...']").click()
+    sleep(1)
+    driver.find_element('css selector', '.css-10wo9uf-option').click()
+    sleep(1)
+    driver.find_element("id","input").send_keys("10")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='تایید']").click()
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/section/div[3]/div[2]/section/section/div/div").click()
+    sleep(1)
+    driver.find_element("css selector","input#address").send_keys("tehran")
+    sleep(1)
+    driver.find_element("id","map").click()
+    sleep(1)
+    driver.find_element("xpath","//button[text()='محل پروژه خود را مشخص کنید']").click()
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ثبت درخواست']").click()
+    sleep(6)
+    driver.switch_to.new_window('tab')
+    sleep(1)
+    driver.get("file:///C:/Users/HamAfza2566/Downloads/index.html")
+    sleep(1)
+    driver.find_element("xpath","//*[@id='btn']").click()
+    sleep(3)
+    alert.accept()
+    all_handle = driver.window_handles
+    driver.switch_to.window(all_handle[0])
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div[1]/div").click()
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div[1]/div[2]").click()
+    sleep(1)
+    driver.find_element("xpath","//p[text()='خروج']").click()
+    sleep(3)
+    driver.find_element("xpath","//*[@id='__next']/section/div[4]/section/div[3]/a[2]").click()
+    sleep(2)
+    driver.find_element("xpath","//button[text()='تشکل']").click()
+    sleep(1)
+    driver.find_element("id","phoneInputLogin").send_keys("09190342754")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال کد']").click()
+    sleep(1)
+    driver.find_element("xpath","(//input[@type='tel'])[2]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[3]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='لیست']").click()
+    sleep(1)
+    driver.find_element("xpath","//div[text()='درخواست ها']").click()
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/main/div[1]/section/div[4]/a/button").click()
+    sleep(5)
+    driver.find_element("xpath","//button[text()='درخواست دسترسی به پروفایل']").click()
+    sleep(1)
+    driver.find_element("xpath","//div[text()='بنویسید']").click()
+    sleep(1)
+    driver.find_element("xpath","//*[text()='معیشتی']").click()
+    sleep(1)
+    driver.find_element("xpath","//textarea[@placeholder='بنویسید']").send_keys("test")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='تایید']").click()
+    sleep(1)
+
+
+
+test_turning_request_to_project()
