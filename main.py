@@ -499,6 +499,4 @@ def test_aprove_proposal():
     assert 'مشاهده پروژه متناظر' in dom
 
 
-
-
 test_aprove_proposal()
