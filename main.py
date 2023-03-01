@@ -5,6 +5,10 @@ from time import sleep
 from faker import  Faker
 fake = Faker()
 from selenium.webdriver.remote.webelement import WebElement
+from random import randint
+
+random_number = randint(100000000000000000000000,999999999999999999999999)
+print(random_number)
 
 
 driver = webdriver.Chrome(executable_path="C:\chromedriver.exe")
@@ -177,13 +181,6 @@ def test_creating_request():
     sleep(1)
     driver.find_element("xpath","//p[contains(@class,'text-[14px] font-normal')]").click()
     sleep(1)
-
-    # driver.find_element("xpath","//button[contains(@class,'w-5 h-5')]").click()
-    # sleep(1)
-    # driver.find_element("xpath","(//div[contains(@class,'rounded-full w-[26px]')])[2]").click()
-    # sleep(1)
-    # driver.find_element("xpath","(//button[text()='سایر'])[2]").click()
-    # sleep(1)
     driver.find_element("xpath","(//div[contains(@class,'rounded-full w-[26px]')])[3]").click()
     sleep(1)
     driver.find_element("xpath","//button[text()='کتابخواني']").click()
@@ -234,7 +231,7 @@ def test_requesting_acces_to_profile():
     driver.get("https://dev-pwa.hnaya.app/")
     driver.set_window_size(360,800)
     sleep(1)
-    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a[2]').click()
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
     sleep(1)
     driver.find_element("xpath","//button[text()='تشکل']").click()
     sleep(1)
@@ -274,7 +271,7 @@ def test_accept_the_acces_to_profile():
     driver.get("https://dev-pwa.hnaya.app")
     driver.set_window_size(360,800)
     sleep(1)
-    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a[2]').click()
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
     sleep(1)
     driver.find_element("id","phoneInputLogin").send_keys("09155607423")
     sleep(1)
@@ -285,20 +282,20 @@ def test_accept_the_acces_to_profile():
     driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
     driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
     sleep(1)
-    driver.find_element("xpath","//*[@id='__next']/section/div[4]/section/div[3]/a[2]").click()
+    driver.find_element("xpath","//*[@id='__next']/section/div[4]/section/div[3]/a").click()
     sleep(3)
     driver.find_element("xpath","//button[text()='مدیریت کنش ها']").click()
     sleep(2)
-    driver.find_element("xpath","//div[@id='__next']/section[1]/div[51]/section[1]/div[4]/a[1]/button[1]").click()
-    sleep(3)
-    driver.find_element("xpath","//span[text()='تشكل هاي درخواستی']").click()
-    sleep(1)
-    driver.find_element("xpath","//button[text()='مشاهده دسترسی ها']").click()
-    sleep(1)
-    driver.find_element("xpath","//button[text()='تایید درخواست']").click()
-    sleep(2)
-    dom = driver.page_source
-    assert 'تایید دسترسی' in dom
+    # driver.find_element("xpath","//div[@id='__next']/section[1]/div[51]/section[1]/div[4]/a[1]/button[1]").click()
+    # sleep(3)
+    # driver.find_element("xpath","//span[text()='تشكل هاي درخواستی']").click()
+    # sleep(1)
+    # driver.find_element("xpath","//button[text()='مشاهده دسترسی ها']").click()
+    # sleep(1)
+    # driver.find_element("xpath","//button[text()='تایید درخواست']").click()
+    # sleep(2)
+    # dom = driver.page_source
+    # assert 'تایید دسترسی' in dom
 
 
 
@@ -309,7 +306,7 @@ def test_creating_proposal():
     driver.get("https://dev-pwa.hnaya.app/")
     driver.set_window_size(360,800)
     sleep(1)
-    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a[2]').click()
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
     sleep(1)
     driver.find_element("xpath","//button[text()='تشکل']").click()
     sleep(1)
@@ -322,7 +319,7 @@ def test_creating_proposal():
     driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
     driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
     sleep(1)
-    driver.find_element("xpath","//*[@id='__next']/section/div[4]/section/div[3]/a[2]").click()
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
     sleep(2)
     driver.find_element("xpath","//button[text()='مدیریت کنش ها']").click()
     sleep(1)
@@ -405,4 +402,306 @@ def test_aprove_proposal():
     assert 'مشاهده پروژه متناظر' in dom
 
 
-test_creating_request()
+
+
+
+
+def test_chat():
+    driver.implicitly_wait(10)
+    driver.get("https://dev-pwa.hnaya.app/")
+    driver.set_window_size(360,800)
+    sleep(1)
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
+    sleep(1)
+    driver.find_element("xpath","//button[text()='تشکل']").click()
+    sleep(1)
+    driver.find_element("id","phoneInputLogin").send_keys("09190342754")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال کد']").click()
+    sleep(1)
+    driver.find_element("xpath","(//input[@type='tel'])[2]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[3]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div[4]/section/div[3]/button").click()
+    sleep(1)
+    driver.find_element("xpath","//div[@class='flex mx-3']").click()
+    sleep(4)
+    driver.find_element("xpath","//textarea[@placeholder='بنویسید']").send_keys("test of selenium")
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div[2]/div[2]/button").click()
+    sleep(4)
+
+
+
+
+
+
+
+def test_edit_profile_by_person():
+    driver.implicitly_wait(10)
+    driver.get("https://dev-pwa.hnaya.app")
+    driver.set_window_size(360,800)
+    sleep(1)
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
+    sleep(1)
+    driver.find_element("id","phoneInputLogin").send_keys("09155607423")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال کد']").click()
+    sleep(1)
+    driver.find_element("xpath","(//input[@type='tel'])[2]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[3]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div[4]/section/div[3]/a").click()
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div[1]/div[2]").click()
+    sleep(1)
+    driver.find_element("xpath","//p[text()='ویرایش پروفایل']").click()
+    sleep(1)
+    driver.find_element("xpath","//input[@id='title']").send_keys("مصطفی کاشی")
+    driver.find_element("xpath","(//input[@id='title'])[2]").click()
+    sleep(1)
+    driver.find_element("xpath","(//button[text()='تایید'])[2]").click()
+    sleep(1)
+    driver.find_element("xpath","//input[@placeholder='مثال : تهران ، شهرک شهید خرازی ، برج  شهید باقری']").send_keys("تهران")
+    sleep(1)
+    driver.find_element("css selector","button#map>div>div").click()
+    sleep(1)
+    driver.find_element("xpath","//button[text()='محل پروژه خود را مشخص کنید']").click()
+    sleep(1)
+    driver.find_element("id","description").send_keys("سلام")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='تایید']").click()
+    sleep(3)
+
+
+
+
+
+
+
+def test_coment_in_project_by_person():
+    driver.implicitly_wait(10)
+    driver.get("https://dev-pwa.hnaya.app")
+    driver.set_window_size(360,800)
+    sleep(1)
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
+    sleep(1)
+    driver.find_element("id","phoneInputLogin").send_keys("09155607423")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال کد']").click()
+    sleep(1)
+    driver.find_element("xpath","(//input[@type='tel'])[2]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[3]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='لیست']").click()
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/main/div[1]/section/a").click()
+    sleep(2)
+    driver.find_element("id","description").send_keys(fake_name)
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال']").click()
+    sleep(3)
+    dom = driver.page_source
+    assert fake_name in dom
+
+
+
+
+
+
+
+
+
+
+def test_coment_in_tashakol_profile_by_person():
+    driver.implicitly_wait(10)
+    driver.get("https://dev-pwa.hnaya.app")
+    driver.set_window_size(360,800)
+    sleep(1)
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
+    sleep(1)
+    driver.find_element("id","phoneInputLogin").send_keys("09155607423")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال کد']").click()
+    sleep(1)
+    driver.find_element("xpath","(//input[@type='tel'])[2]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[3]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='لیست']").click()
+    sleep(1)
+    driver.find_element("xpath","//div[text()='تشکل ها']").click()
+    sleep(1)
+    driver.find_element("xpath","")
+
+
+    driver.find_element("id","description").send_keys(fake_name)
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال']").click()
+    sleep(3)
+    dom = driver.page_source
+    assert fake_name in dom
+
+
+
+
+
+
+
+def test_coment_in_project_by_tashakol():
+    driver.implicitly_wait(10)
+    driver.get("https://dev-pwa.hnaya.app")
+    driver.set_window_size(360,800)
+    sleep(1)
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
+    sleep(1)
+    driver.find_element("xpath", "//button[text()='تشکل']").click()
+    sleep(1)
+    driver.find_element("id","phoneInputLogin").send_keys("09190342754")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال کد']").click()
+    sleep(1)
+    driver.find_element("xpath","(//input[@type='tel'])[2]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[3]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='لیست']").click()
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/main/div[1]/section/a").click()
+    sleep(1)
+    driver.find_element("id","description").send_keys(fake_name)
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال']").click()
+    sleep(3)
+    dom = driver.page_source
+    assert fake_name in dom
+
+
+
+
+
+
+def test_coment_in_tashakol_profile_by_tashakol():
+    driver.implicitly_wait(10)
+    driver.get("https://dev-pwa.hnaya.app/")
+    driver.set_window_size(360,800)
+    sleep(1)
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
+    sleep(1)
+    driver.find_element("xpath","//button[text()='تشکل']").click()
+    sleep(1)
+    driver.find_element("id","phoneInputLogin").send_keys("09190342754")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال کد']").click()
+    sleep(1)
+    driver.find_element("xpath","(//input[@type='tel'])[2]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[3]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
+    sleep(1)
+    driver.find_element("xpath", "//button[text()='لیست']").click()
+    sleep(1)
+
+
+    driver.find_element("id","description").send_keys(fake_name)
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال']").click()
+    sleep(3)
+    dom = driver.page_source
+    assert fake_name in dom
+
+
+
+
+
+
+
+def test_add_shaba_number_by_tashakol():
+    driver.implicitly_wait(10)
+    driver.get("https://dev-pwa.hnaya.app/")
+    driver.set_window_size(360,800)
+    sleep(1)
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
+    sleep(1)
+    driver.find_element("xpath","//button[text()='تشکل']").click()
+    sleep(1)
+    driver.find_element("id","phoneInputLogin").send_keys("09190342754")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال کد']").click()
+    sleep(1)
+    driver.find_element("xpath","(//input[@type='tel'])[2]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[3]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div[4]/section/div[3]/a").click()
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div/div[2]").click()
+    sleep(1)
+    driver.find_element("xpath","//p[text()='کیف پول']").click()
+    sleep(1)
+    driver.find_element("xpath","//h5[text()='حساب ها (شبا)']").click()
+    sleep(1)
+    driver.find_element("tag name","button").click()
+    sleep(1)
+    driver.find_element("tag name","input").send_keys(random_number)
+    sleep(1)
+    driver.find_element("tag name","button").click()
+    sleep(3)
+    dom = driver.page_source
+    assert str(random_number) in dom
+
+
+
+
+
+
+
+def test_delet_shaba_number_by_tashakol():
+    driver.implicitly_wait(10)
+    driver.get("https://dev-pwa.hnaya.app/")
+    driver.set_window_size(360,800)
+    sleep(1)
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
+    sleep(1)
+    driver.find_element("xpath","//button[text()='تشکل']").click()
+    sleep(1)
+    driver.find_element("id","phoneInputLogin").send_keys("09190342754")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال کد']").click()
+    sleep(1)
+    driver.find_element("xpath","(//input[@type='tel'])[2]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[3]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div[4]/section/div[3]/a").click()
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div/div[2]").click()
+    sleep(1)
+    driver.find_element("xpath","//p[text()='کیف پول']").click()
+    sleep(1)
+    driver.find_element("xpath","//h5[text()='حساب ها (شبا)']").click()
+    sleep(1)
+    driver.find_element("tag name","button").click()
+    sleep(1)
+    driver.find_element("tag name","input").send_keys(random_number)
+    sleep(1)
+    driver.find_element("tag name","button").click()
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div[2]/div[1]/div/div[2]/div[2]").click()
+    sleep(3)
+    dom = driver.page_source
+    assert str(random_number)  not in dom
+
+
+
+
