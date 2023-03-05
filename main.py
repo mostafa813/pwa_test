@@ -406,7 +406,7 @@ def test_aprove_proposal():
 
 
 
-def test_chat():
+def test_chat_by_tashakol():
     driver.implicitly_wait(10)
     driver.get("https://dev-pwa.hnaya.app/")
     driver.set_window_size(360,800)
@@ -704,4 +704,125 @@ def test_delet_shaba_number_by_tashakol():
 
 
 
+
+
+
+
+
+
+def test_add_money_to_wallet_by_tashakol():
+    driver.implicitly_wait(10)
+    driver.get("https://dev-pwa.hnaya.app/")
+    driver.set_window_size(360,800)
+    sleep(1)
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
+    sleep(1)
+    driver.find_element("xpath","//button[text()='تشکل']").click()
+    sleep(1)
+    driver.find_element("id","phoneInputLogin").send_keys("09190342754")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال کد']").click()
+    sleep(1)
+    driver.find_element("xpath","(//input[@type='tel'])[2]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[3]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div[4]/section/div[3]/a").click()
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div/div[2]").click()
+    sleep(1)
+    driver.find_element("xpath","//p[text()='کیف پول']").click()
+    sleep(1)
+    driver.find_element("xpath","//h5[text()='افزایش اعتبار']").click()
+    sleep(1)
+    driver.find_element("tag name","input").send_keys("100")
+    sleep(1)
+    driver.find_element("tag name","button").click()
+    sleep(2)
+    driver.find_element("xpath","//input[@value='پرداخت موفق']").click()
+    sleep(4)
+
+
+
+
+
+
+
+def test_add_shaba_number_by_person():
+    driver.implicitly_wait(10)
+    driver.get("https://dev-pwa.hnaya.app")
+    driver.set_window_size(360,800)
+    sleep(1)
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
+    sleep(1)
+    driver.find_element("id","phoneInputLogin").send_keys("09155607423")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال کد']").click()
+    sleep(1)
+    driver.find_element("xpath","(//input[@type='tel'])[2]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[3]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div[4]/section/div[3]/a").click()
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div/div[2]").click()
+    sleep(1)
+    driver.find_element("xpath","//p[text()='کیف پول']").click()
+    sleep(1)
+    driver.find_element("xpath","//h5[text()='حساب ها (شبا)']").click()
+    sleep(1)
+    driver.find_element("tag name","button").click()
+    sleep(1)
+    driver.find_element("tag name","input").send_keys(random_number)
+    sleep(1)
+    driver.find_element("tag name","button").click()
+    sleep(3)
+    dom = driver.page_source
+    assert str(random_number) in dom
+
+
+
+
+
+
+
+def test_delet_shaba_number_by_person():
+    driver.implicitly_wait(10)
+    driver.get("https://dev-pwa.hnaya.app")
+    driver.set_window_size(360,800)
+    sleep(1)
+    driver.find_element("xpath",'//*[@id="__next"]/section/div[4]/section/div[3]/a').click()
+    sleep(1)
+    driver.find_element("id","phoneInputLogin").send_keys("09155607423")
+    sleep(1)
+    driver.find_element("xpath","//button[text()='ارسال کد']").click()
+    sleep(1)
+    driver.find_element("xpath","(//input[@type='tel'])[2]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[3]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[4]").send_keys("1")
+    driver.find_element("xpath","(//input[@type='tel'])[5]").send_keys("1")
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div[4]/section/div[3]/a").click()
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div/div[2]").click()
+    sleep(1)
+    driver.find_element("xpath","//p[text()='کیف پول']").click()
+    sleep(1)
+    driver.find_element("xpath","//h5[text()='حساب ها (شبا)']").click()
+    sleep(1)
+    driver.find_element("tag name","button").click()
+    sleep(1)
+    driver.find_element("tag name","input").send_keys(random_number)
+    sleep(1)
+    driver.find_element("tag name","button").click()
+    sleep(1)
+    driver.find_element("xpath","//*[@id='__next']/section/div[2]/div[1]/div/div[2]/div[2]").click()
+    sleep(3)
+    dom = driver.page_source
+    assert str(random_number)  not in dom
+
+
+test_delet_shaba_number_by_person()
 
